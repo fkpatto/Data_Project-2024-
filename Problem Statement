@@ -1,0 +1,15 @@
+1. Problem Statement
+
+Purpose of the Data: The sales data is collected to analyse sales performance across different regions, representatives, and products. The aim is to identify trends, predict future sales, optimize inventory, and improve decision-making for business growth.
+
+Problem to Solve: The primary problem is to understand which factors influence sales volume and revenue, and how sales performance varies across different regions and representatives. This analysis will help in forecasting future sales, improving sales strategies, and identifying areas that need attention.
+
+Explanation of Columns:
+
+OrderDate: The date when the order was placed. Data type: datetime.
+Region: The geographic area where the sale was made. Data type: string.
+Rep: The sales representative responsible for the sale. Data type: string.
+Item: The product sold. Data type: string.
+Units: The number of units sold. Data type: integer.
+Unit Cost: The cost per unit of the product. Data type: float.
+Total: The total sales amount for the order. Data type: float.
