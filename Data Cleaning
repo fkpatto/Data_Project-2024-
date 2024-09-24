@@ -1,1 +1,17 @@
+import pandas as pd
+import matplotlib.pyplot as plt
 
+df = pd.read_csv('Sales_sample.csv')
+
+units_per_item = df.groupby('Item')['Units'].sum()
+
+total_units = units_per_item.sum()
+
+units_per_item.plot(kind='bar', color='blue')
+
+plt.xlabel('Items')
+plt.ylabel('Total Units Sold')
+
+plt.title('Total Units Sold per Item')
+
+plt.show()
