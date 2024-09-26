@@ -31,7 +31,7 @@ plt.show()
 
 # Alternatively, plot using Seaborn for a more stylized chart
 plt.figure(figsize=(10, 6))
-sns.lineplot(x='Date', y='Sales', data=df, marker='o', color='g')
+sns.lineplot(x='saledate', y='sellingprice', data=df, marker='o', color='g')
 plt.title('Sales Trend Over Time')
 plt.xlabel('Date')
 plt.ylabel('Sales')
