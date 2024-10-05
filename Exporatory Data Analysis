@@ -1,1 +1,51 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+df = pd.read_csv('Sales_sample.csv')
+
+df['OrderDate'] = pd.to_datetime(df['OrderDate'])
+
+print("Descriptive Statistics:\n", df.describe())
+
+sales_per_region = df.groupby('Region')['Total'].sum()
+plt.figure(figsize=(8, 6))
+sales_per_region.plot(kind='bar', color='green')
+plt.title('Total Sales per Region')
+plt.xlabel('Region')
+plt.ylabel('Total Sales')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+df.groupby(df['OrderDate'].dt.to_period('M'))['Total'].sum().plot()
+plt.title('Sales Trend Over Time')
+plt.xlabel('Date')
+plt.ylabel('Total Sales')
+plt.xticks(rotation=45)
+plt.show()
+
+plt.figure(figsize=(8, 6))
+sns.boxplot(x='Rep', y='Total', data=df)
+plt.title('Sales Distribution by Representative')
+plt.xticks(rotation=45)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.heatmap(df[['Units', 'Unit Cost', 'Total']].corr(), annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.show()
+
+units_per_region_item = df.groupby(['Region', 'Item'])['Units'].sum().unstack()
+units_per_region_item.plot(kind='bar', stacked=True, figsize=(10, 6))
+plt.title('Units Sold per Region and Item')
+plt.xlabel('Region')
+plt.ylabel('Units Sold')
+plt.legend(title='Item')
+plt.show()
+
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Units'], df['Total'], alpha=0.5, color='purple')
+plt.title('Sales vs. Units Sold')
+plt.xlabel('Units Sold')
+plt.ylabel('Total Sales')
+plt.show()
